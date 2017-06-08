@@ -1,0 +1,10 @@
+# History files
+.Rhistory
+
+# R data files from past sessions
+.DS_Store
+
+# Ignore data files
+raw-data/*
+
+.DS_Store
