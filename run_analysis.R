@@ -76,6 +76,45 @@ mean_sd_ind <- grep(pattern = "Activity_code|Subject_ID|mean\\(\\)|std\\(\\)",
 measures_data <- complete_data[, mean_sd_ind]
 
 
+### Giving descriptive names 
+
+colnames(measures_data) <- gsub(pattern = "Acc", replacement = "Accelerometer", 
+                      x = colnames(measures_data))
+
+colnames(measures_data) <- gsub(pattern = "Gyro", replacement = "Gyroscope", 
+                      x = colnames(measures_data))
+
+colnames(measures_data) <- gsub(pattern = "BodyBody", replacement = "Body", 
+                      x = colnames(measures_data))
+
+colnames(measures_data) <- gsub(pattern = "Mag", replacement = "Magnitude", 
+                      x = colnames(measures_data))
+
+colnames(measures_data) <- gsub(pattern = "^t", replacement = "Time", 
+                      x = colnames(measures_data))
+
+colnames(measures_data) <- gsub(pattern = "^f", replacement = "Frequency", 
+                      x = colnames(measures_data))
+
+colnames(measures_data) <- gsub(pattern = "tBody", replacement = "TimeBody", 
+                      x = colnames(measures_data))
+
+colnames(measures_data) <- gsub(pattern = "-mean()", replacement = "Mean", 
+                      x = colnames(measures_data), ignore.case = TRUE)
+
+colnames(measures_data) <- gsub(pattern = "-std()", replacement = "STD", 
+                      x = colnames(measures_data), ignore.case = TRUE)
+
+colnames(measures_data) <- gsub(pattern = "-freq()", replacement = "Frequency", 
+                      x = colnames(measures_data), ignore.case = TRUE)
+
+colnames(measures_data) <- gsub(pattern = "angle", replacement = "Angle", 
+                      x = colnames(measures_data))
+
+colnames(measures_data) <- gsub(pattern = "gravity", replacement = "Gravity", 
+                      x = colnames(measures_data))
+
+
 ### Label activity names
 
 measures_data <- measures_data %>% 
@@ -99,3 +138,4 @@ measures_averages <- measures_data %>%
 write.table(x = measures_averages, 
             file = "measures_averages.txt", 
             row.names = FALSE)
+
